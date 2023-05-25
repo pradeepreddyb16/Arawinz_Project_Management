@@ -5,8 +5,6 @@ from extensions import mysql
 # from flask_ngrok import run_with_ngrok
 #from models.webmodels import Models as db
 #import jwt  
-
-
 import os
 from dotenv import load_dotenv
 
