@@ -6,7 +6,6 @@ from extensions import mysql
 #from models.webmodels import Models as db
 #import jwt  
 
-_secret_key="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzb21lIjoicGF5bG9hZCJ9.Joh1R2dYzkRvDkqv3sygm5YyK8Gi4ShZqbhK2gxcs2U"
 
 import os
 from dotenv import load_dotenv
@@ -41,7 +40,7 @@ port=os.getenv('PORT')
 mysql=MySQL(app)
 
 
-app.secret_key = "asduqwueqweHBWEHQJ&!GBH#!HE*(#@*EBbBbmm1231DQD1@!"
+app.secret_key = "480e0720b919497ba860ae1a6b20a3b9"
 
 
 @app.after_request
