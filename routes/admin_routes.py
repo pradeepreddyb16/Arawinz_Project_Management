@@ -39,7 +39,7 @@ def uploadimage(pic, directory):
     return picfilename
 
 # user login
-@api.route('/user_login',methods=['POST','GET'])
+@api.route('/user_login',methods=['POST','GET']) 
 def login():
     if request.method=='POST':
         uname = request.form['uname']
@@ -85,7 +85,7 @@ def validate_otp():
                 session.pop('login_otp', None)
                 db.resetotpattemptswithuname(uname)
                 session['user_data']=data
-                return jsonify({'status':True,'msg':'Login Successful','data':{ 'user_id': session['user_data']['user_id'], 'admin_name': session['admin_data']['admin_name'], 'admin_mobile': session['admin_data']['admin_mobile'], 'admin_email': session['admin_data']['admin_email'],'admin_role': session['admin_data']['admin_role']}})
+                return jsonify({'status':True,'msg':'Login Successful','data':{ 'user_id': session['user_data']['user_id'], 'user_name': session['user_data']['user_name'], 'user_mobile': session['user_data']['user_mobile'], 'user_email': session['user_data']['user_email'],'user_role': session['user_data']['user_role']}})
         else:
             data=db.getotpattemptswithuname(uname)
             if data and data['otp_atempts']>=5 and data['otp_date']!=current_date:
@@ -108,9 +108,10 @@ def logout():
 # check session
 @api.route('/getsession',methods=['POST','GET'])
 def getsession():
+
     if 'user_data' in session: 
-        print(session['admin_data'])
-        return jsonify({'status':True,'data':{ 'admin_id': session['admin_data']['admin_id'], 'admin_name': session['admin_data']['admin_name'], 'admin_mobile': session['admin_data']['admin_mobile'], 'admin_email': session['admin_data']['admin_email'],'admin_role': session['admin_data']['admin_role']}})
+        print(session['user_data'])
+        return jsonify({'status':True,'data':{ 'user_id': session['user_data']['user_id'], 'user_name': session['user_data']['user_name'], 'user_mobile': session['user_data']['user_mobile'], 'user_email': session['user_data']['user_email'],'user_role': session['user_data']['user_role']}})
 
     else:
         return jsonify({'status':False})
